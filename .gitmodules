@@ -1,0 +1,3 @@
+[submodule "CS61C"]
+	path = CS61C
+	url = git@github.com:Wolleaf/CS61C.git
