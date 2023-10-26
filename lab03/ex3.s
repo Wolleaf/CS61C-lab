@@ -1,7 +1,7 @@
 .globl main
 
 .data
-source:
+source: # source array
     .word   3
     .word   1
     .word   4
@@ -9,7 +9,7 @@ source:
     .word   5
     .word   9
     .word   0
-dest:
+dest: # dest array
     .word   0
     .word   0
     .word   0
@@ -22,10 +22,10 @@ dest:
     .word   0
 
 .text
-fun:
-    addi t0, a0, 1
-    sub t1, x0, a0
-    mul a0, t0, t1
+fun: # "fun" function
+    addi t0, a0, 1 # a0: "x"(argument); t0 = x + 1
+    sub t1, x0, a0 # t1 = a0(x)
+    mul a0, t0, t1 # a0 = t0(x + 1) * t1(x); a0: retval
     jr ra
 
 main:
