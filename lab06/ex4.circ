@@ -157,6 +157,13 @@
       <a name="locked" val="true"/>
       <a name="width" val="8"/>
     </comp>
+    <comp lib="0" loc="(180,210)" name="Tunnel">
+      <a name="label" val="clock"/>
+    </comp>
+    <comp lib="0" loc="(540,170)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="clock"/>
+    </comp>
     <comp lib="0" loc="(810,130)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="facing" val="west"/>
@@ -165,5 +172,34 @@
       <a name="output" val="true"/>
       <a name="width" val="8"/>
     </comp>
+    <comp lib="3" loc="(270,100)" name="Multiplier"/>
+    <comp lib="3" loc="(420,100)" name="Adder"/>
+    <comp lib="4" loc="(280,140)" name="Register">
+      <a name="appearance" val="logisim_evolution"/>
+    </comp>
+    <comp lib="4" loc="(550,100)" name="Register">
+      <a name="appearance" val="logisim_evolution"/>
+    </comp>
+    <wire from="(170,110)" to="(170,150)"/>
+    <wire from="(170,110)" to="(230,110)"/>
+    <wire from="(170,180)" to="(170,210)"/>
+    <wire from="(170,180)" to="(250,180)"/>
+    <wire from="(170,210)" to="(180,210)"/>
+    <wire from="(170,90)" to="(230,90)"/>
+    <wire from="(250,180)" to="(250,210)"/>
+    <wire from="(250,210)" to="(280,210)"/>
+    <wire from="(270,100)" to="(280,100)"/>
+    <wire from="(280,100)" to="(280,170)"/>
+    <wire from="(340,90)" to="(340,170)"/>
+    <wire from="(340,90)" to="(380,90)"/>
+    <wire from="(350,110)" to="(350,200)"/>
+    <wire from="(350,110)" to="(380,110)"/>
+    <wire from="(350,200)" to="(650,200)"/>
+    <wire from="(420,100)" to="(550,100)"/>
+    <wire from="(540,170)" to="(550,170)"/>
+    <wire from="(550,100)" to="(550,130)"/>
+    <wire from="(610,130)" to="(650,130)"/>
+    <wire from="(650,130)" to="(650,200)"/>
+    <wire from="(650,130)" to="(810,130)"/>
   </circuit>
 </project>
