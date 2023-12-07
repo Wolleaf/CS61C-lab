@@ -1,0 +1,4 @@
+1.Which 2 orderings perform best for these 1000-by-1000 matrices?
+jki and kji
+2.Which 2 orderings perform the worst?
+ikj and kij
