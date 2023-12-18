@@ -34,12 +34,38 @@ void v_add_naive(double* x, double* y, double* z) {
 void v_add_optimized_adjacent(double* x, double* y, double* z) {
     // TODO: Implement this function
     // Do NOT use the `for` directive here!
+    // maybe it depends on your computer.....
+    #pragma omp parallel
+    {
+        int thread_id = omp_get_thread_num();
+        int thread_num = omp_get_num_threads();
+        for (int i = thread_id; i < ARRAY_SIZE; i += thread_num) {
+            z[i] = x[i] + y[i];
+        }
+    }
 }
 
 // Chunks Method
 void v_add_optimized_chunks(double* x, double* y, double* z) {
     // TODO: Implement this function
     // Do NOT use the `for` directive here!
+    // maybe it depends on your computer.....
+    #pragma omp parallel
+    {
+        int thread_id = omp_get_thread_num();
+        int thread_num = omp_get_num_threads();
+        int thread_size = ARRAY_SIZE / thread_num;
+        if (thread_id + 1 != thread_num) {
+            for (int i = thread_id * thread_size; i < (thread_id + 1) * thread_size; i++) {
+                z[i] = x[i] + y[i];
+            }
+        }
+        else {
+            for (int i = thread_id * thread_size; i < ARRAY_SIZE; i++) {
+                z[i] = x[i] + y[i];
+            }
+        }
+    }
 }
 
 /* -------------------------------Dot Product------------------------------*/
@@ -60,6 +86,15 @@ double dotp_manual_optimized(double* x, double* y, int arr_size) {
     double global_sum = 0.0;
     // TODO: Implement this function
     // Do NOT use the `reduction` directive here!
+    // maybe it depends on your computer.....
+    #pragma omp parallel
+    {
+        double sum = 0.0;
+        #pragma omp for
+        for (int i = 0; i < arr_size; i++) sum += x[i] * y[i];
+        #pragma omp critical
+        global_sum += sum;
+    }
     return global_sum;
 }
 
@@ -68,6 +103,12 @@ double dotp_reduction_optimized(double* x, double* y, int arr_size) {
     double global_sum = 0.0;
     // TODO: Implement this function
     // Please DO use the `reduction` directive here!
+    // maybe it depends on your computer.....
+    #pragma omp parallel reduction(+:global_sum)
+    {
+        #pragma omp for
+        for (int i = 0; i < arr_size; i++) global_sum += x[i] * y[i];
+    }
     return global_sum;
 }
 
